@@ -1,0 +1,53 @@
+/*
+Given a non-negative number represented as an array of digits,
+
+add 1 to the number ( increment the number represented by the digits ).
+
+The digits are stored such that the most significant digit is at the head of the list.
+
+Example:
+
+If the vector has [1, 2, 3]
+
+the returned vector should be [1, 2, 4]
+
+as 123 + 1 = 124.
+*/
+
+#include<bits/stdc++.h>
+
+vector<int> Solution::plusOne(vector<int> &A) {
+    
+    vector<int> temp,t;
+    int n= A.size();
+    temp.push_back(0);
+    for(int i=0;i<n;i++)
+    {
+        temp.push_back(A[i]);
+    }
+    
+    
+    int rem=1;
+    for(int i=temp.size()-1;i>=0;i--)
+    {
+        
+        temp[i] = temp[i]+rem;
+        rem = temp[i]/10;
+        temp[i]  = temp[i]%10;
+        
+    }
+    
+    int i=0;
+    while(temp[i]==0)
+    {
+        i++;
+    }
+    
+    for(int j=i;i<temp.size();i++)
+    {
+        t.push_back(temp[i]);
+    }
+    
+    
+    return t;
+}
